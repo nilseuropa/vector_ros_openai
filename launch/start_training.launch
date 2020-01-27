@@ -1,0 +1,6 @@
+<launch>
+    <!-- This version uses the openai_ros environments -->
+    <rosparam command="load" file="$(find vector_ros_openai)/config/vector_openai_qlearn_params.yaml" />
+    <!-- Launch the training system -->
+    <node pkg="vector_ros_openai" name="q_learning" type="start_qlearning.py" output="screen"/>
+</launch>

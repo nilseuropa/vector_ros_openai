@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>vector_ros_openai</name>
+  <version>0.0.0</version>
+  <description>OpenAI Gym in Gazebo for Anki Vector</description>
+
+  <maintainer email="marton@neorobot.hu">nilseuropa</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>openai_ros</build_depend>
+  <build_depend>rospy</build_depend>
+  <run_depend>openai_ros</run_depend>
+  <run_depend>rospy</run_depend>
+
+</package>
