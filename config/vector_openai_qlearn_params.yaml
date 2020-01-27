@@ -2,7 +2,7 @@ anki_vector: #namespace
     task_and_robot_environment_name: 'VectorPracticeWorld-v0'
     ros_ws_abspath: "/home/nils/ros"
     running_step: 0.04 # amount of time the control will be executed
-    pos_step: 0.016     # increment in position for each command
+    pos_step: 0.001     # increment in position for each command
 
     #qlearn parameters
     alpha: 0.1
