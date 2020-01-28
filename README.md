@@ -6,14 +6,14 @@ This package is based on a modified version of [openai_ros](http://wiki.ros.org/
 ![](doc/vector_openai.gif)
 
 
-### Jump start
+## Jump start
 * Change `ros_ws_abspath` in `config/vector_openai_qlearn_params.yaml` to your own path
 * `roslaunch vector_ros_openai start_training.launch` _( downloads the model automatically )_
 
-### Contents
+## Contents
 The following four layers provide the connection between the learning algorithm and the simulation in a top down order.
 
-##### Training scripts
+#### Training scripts
 The **scripts** folder contains the learning algorithm setup that is independent of the robot and task environments that are also selected here. For example to experiment with learning algorithms for the collision avoidance task just add a new script here.
 
 To start the whole chain of environments just invoke:
@@ -25,7 +25,7 @@ Configuration files for the training are stored under `/vector_ros_openai/config
 
 * Example [Q-Learning](https://github.com/vmayoral/basic_reinforcement_learning) by Victor Mayoral
 
-##### Task Environments
+#### Task Environments
 Under `src/vector_ros_openai/task_envs/anki_vector` you can find the **task** or **world** scripts that describe the interface between the robot environment and the training script. Depending on the task that has to be learned by the agent the following functions are relevant _( see openai_ros tutorials for details )_:
 * How to apply the selected action to the robot: **_set_action**
 * How to get the observations resulting from the action: **_get_obs**
@@ -34,7 +34,7 @@ Under `src/vector_ros_openai/task_envs/anki_vector` you can find the **task** or
 
 Configuration files for the environments are stored under `/task_envs/anki_vector/config` .
 
-##### Robot Environment
+#### Robot Environment
 The AnkiVectorEnv superclass implements methods to interface the sensors and actuators of the [simulation](https://github.com/nilseuropa/anki_description) with the task environment:
 
 `src/vector_ros_openai/robot_envs/anki_vector_env.py` :
@@ -45,7 +45,7 @@ The AnkiVectorEnv superclass implements methods to interface the sensors and act
 * **get_laser_scan** - pass front TOF ranger scan
 
 
-##### Gazebo Environment
+#### Gazebo Environment
 This is a transparent layer provided by **openai_ros**. This class is the one that implements the functions required by the OpenAI Gym. It takes care of all the steps that need to be done on the simulator when doing a training step or a training reset _( e.g. resets the simulator or the controllers after each step )_ .
 
 This class also publishes the last episode reward on the topic **/openai/reward**
