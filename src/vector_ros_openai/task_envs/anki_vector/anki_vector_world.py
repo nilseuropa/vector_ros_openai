@@ -162,10 +162,14 @@ class AnkiVectorWorldEnv(anki_vector_env.AnkiVectorEnv):
 
     def _is_done(self, observations):
 
+        self._episode_done = False
+        if (self.min_range > observations[0].range > 0):
+            self._episode_done = True
+
         if self._episode_done:
             rospy.logerr("AnkiVector is Too Close to wall==>")
         else:
-            rospy.logwarn("AnkiVector is NOT close to a wall ==>")
+            rospy.logwarn("AnkiVector is NOT close to a wall ==>")# +str(observations[0]))
 
         # Now we check if it has crashed based on the imu
         imu_data = self.get_imu()
