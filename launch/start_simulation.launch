@@ -1,3 +1,4 @@
 <launch>
-    <include file="$(find anki_description)/launch/simulation.launch"/>
+    <include file="$(find anki_description)/launch/start_world.launch"/>
+    <include file="$(find anki_description)/launch/put_robot_in_world.launch"/>
 </launch>

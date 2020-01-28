@@ -16,13 +16,9 @@ if __name__ == '__main__':
     rospy.init_node('anki_vector_world_qlearn', anonymous=True, log_level=rospy.WARN)
 
     # Init OpenAI_ROS ENV
-    task_and_robot_environment_name = rospy.get_param(
-        '/anki_vector/task_and_robot_environment_name')
-    env = StartOpenAI_ROS_Environment(
-        task_and_robot_environment_name)
-    # Create the Gym environment
-    rospy.loginfo("Gym environment done")
-    rospy.loginfo("Starting Learning")
+    task_and_robot_environment_name = rospy.get_param('/anki_vector/task_and_robot_environment_name')
+    env = StartOpenAI_ROS_Environment(task_and_robot_environment_name)
+    rospy.loginfo("Gym environment ready")
 
     # Set the logging system
     rospack = rospkg.RosPack()
