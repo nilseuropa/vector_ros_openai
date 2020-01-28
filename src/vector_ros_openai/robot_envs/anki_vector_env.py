@@ -13,24 +13,11 @@ from vector_ros_openai.openai_ros_common import ROSLauncher
 
 
 class AnkiVectorEnv(robot_gazebo_env.RobotGazeboEnv):
-    """Superclass for all CubeSingleDisk environments.
+    """Superclass
     """
 
     def __init__(self, ros_ws_abspath):
         """
-        Initializes a new AnkiVectorEnv environment.
-        AnkiVector doesnt use controller_manager, therefore we wont reset the
-        controllers in the standard fashion. For the moment we wont reset them.
-
-        To check any topic we need to have the simulations running, we need to do two things:
-        1) Unpause the simulation: without that th stream of data doesnt flow. This is for simulations
-        that are pause for whatever the reason
-        2) If the simulation was running already for some reason, we need to reset the controlers.
-        This has to do with the fact that some plugins with tf, dont understand the reset of the simulation
-        and need to be reseted to work properly.
-
-        The Sensors: The sensors accesible are the ones considered usefull for AI learning.
-
         Sensor Topic List:
         * /odom : Odometry readings of the Base of the Robot
         * /vector/imu: Inertial Mesuring Unit that gives relative accelerations and orientations.
@@ -211,7 +198,6 @@ class AnkiVectorEnv(robot_gazebo_env.RobotGazeboEnv):
     def move_base(self, linear_speed, angular_speed, epsilon=0.05, update_rate=10):
         """
         It will move the base based on the linear and angular speeds given.
-        It will wait untill those twists are achived reading from the odometry topic.
         :param linear_speed: Speed in the X axis of the robot base frame
         :param angular_speed: Speed of the angular turning of the robot base frame
         :param epsilon: Acceptable difference between the speed asked and the odometry readings

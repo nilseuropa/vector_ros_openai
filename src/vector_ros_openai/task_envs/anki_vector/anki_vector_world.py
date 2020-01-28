@@ -115,13 +115,12 @@ class AnkiVectorWorldEnv(anki_vector_env.AnkiVectorEnv):
 
     def _set_action(self, action):
         """
-        This set action will Set the linear and angular speed of the turtlebot2
+        This set action will Set the linear and angular speed of the AnkiVector
         based on the action number given.
         :param action: The action integer that set s what movement to do next.
         """
 
         rospy.logdebug("Start Set Action ==>"+str(action))
-        # We convert the actions to speed movements to send to the parent class CubeSingleDiskEnv
         if action == 0: #FORWARD
             linear_speed = self.linear_forward_speed
             angular_speed = 0.0

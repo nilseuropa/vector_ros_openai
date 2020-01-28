@@ -1,11 +1,11 @@
 anki_vector: #namespace
 
     n_actions: 3 # We have 3 actions, Forwards,TurnLeft,TurnRight
-    n_observations: 1
+    n_observations: 1 # single TOF sensor
 
     speed_step: 1.0 # Time to wait in the reset phases
 
-    linear_forward_speed: 0.15 # Spwwed for ging fowards
+    linear_forward_speed: 0.15 # Speed for going forward
     linear_turn_speed: 0.1 # Lienar speed when turning
     angular_speed: 2.5 # Angular speed when turning Left or Right
     init_linear_forward_speed: 0.0 # Initial linear speed in which we start each episode
