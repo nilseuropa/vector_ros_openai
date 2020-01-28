@@ -8,7 +8,7 @@ from gym import wrappers
 # ROS packages required
 import rospy
 import rospkg
-from openai_ros.openai_ros_common import StartOpenAI_ROS_Environment
+from vector_ros_openai.openai_ros_common import StartOpenAI_ROS_Environment
 
 
 if __name__ == '__main__':

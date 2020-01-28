@@ -2,12 +2,28 @@ cmake_minimum_required(VERSION 2.8.3)
 project(vector_ros_openai)
 
 find_package(catkin REQUIRED COMPONENTS
-  openai_ros
   rospy
+  std_msgs
+  message_generation
 )
 
+catkin_python_setup()
+
+## Generate messages in the 'msg' folder
+add_message_files(
+   FILES
+   RLExperimentInfo.msg
+ )
+
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
+
 catkin_package(
-  CATKIN_DEPENDS rospy
+  DEPENDS message_runtime rospy gazebo_msgs std_msgs geometry_msgs controller_manager_msgs
+  # system_lib
 )
 
 ###########
@@ -15,6 +31,7 @@ catkin_package(
 ###########
 
 include_directories(
+# include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -58,7 +75,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_my_turtlebot3_openai_example.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_openai_ros.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
